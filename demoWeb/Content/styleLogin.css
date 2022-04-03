@@ -130,6 +130,7 @@ a {
 
         .login-form .group .button {
             background: #1161ee;
+            margin-top:10px;
         }
 
         .login-form .group label .icon {

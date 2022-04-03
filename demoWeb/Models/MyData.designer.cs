@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace demoWeb
+namespace demoWeb.Models
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -478,8 +478,6 @@ namespace demoWeb
 		
 		private System.Nullable<int> _MAQUAN_HUYEN;
 		
-		private EntitySet<KHACHHANG> _KHACHHANGs;
-		
 		private EntitySet<PHIEUMUA> _PHIEUMUAs;
 		
 		private EntityRef<QUAN_HUYEN> _QUAN_HUYEN;
@@ -498,7 +496,6 @@ namespace demoWeb
 		
 		public TINH_THANH()
 		{
-			this._KHACHHANGs = new EntitySet<KHACHHANG>(new Action<KHACHHANG>(this.attach_KHACHHANGs), new Action<KHACHHANG>(this.detach_KHACHHANGs));
 			this._PHIEUMUAs = new EntitySet<PHIEUMUA>(new Action<PHIEUMUA>(this.attach_PHIEUMUAs), new Action<PHIEUMUA>(this.detach_PHIEUMUAs));
 			this._QUAN_HUYEN = default(EntityRef<QUAN_HUYEN>);
 			OnCreated();
@@ -568,19 +565,6 @@ namespace demoWeb
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TINH_THANH_KHACHHANG", Storage="_KHACHHANGs", ThisKey="MATINH_THANH", OtherKey="MATINH_THANH")]
-		public EntitySet<KHACHHANG> KHACHHANGs
-		{
-			get
-			{
-				return this._KHACHHANGs;
-			}
-			set
-			{
-				this._KHACHHANGs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TINH_THANH_PHIEUMUA", Storage="_PHIEUMUAs", ThisKey="MATINH_THANH", OtherKey="MATINH_THANH")]
 		public EntitySet<PHIEUMUA> PHIEUMUAs
 		{
@@ -646,18 +630,6 @@ namespace demoWeb
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_KHACHHANGs(KHACHHANG entity)
-		{
-			this.SendPropertyChanging();
-			entity.TINH_THANH = this;
-		}
-		
-		private void detach_KHACHHANGs(KHACHHANG entity)
-		{
-			this.SendPropertyChanging();
-			entity.TINH_THANH = null;
 		}
 		
 		private void attach_PHIEUMUAs(PHIEUMUA entity)
@@ -1753,13 +1725,9 @@ namespace demoWeb
 		
 		private string _DIACHI;
 		
-		private System.Nullable<int> _MATINH_THANH;
-		
 		private EntitySet<PHIEUMUA> _PHIEUMUAs;
 		
 		private EntitySet<TAIKHOAN> _TAIKHOANs;
-		
-		private EntityRef<TINH_THANH> _TINH_THANH;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1779,15 +1747,12 @@ namespace demoWeb
     partial void OnGMAILChanged();
     partial void OnDIACHIChanging(string value);
     partial void OnDIACHIChanged();
-    partial void OnMATINH_THANHChanging(System.Nullable<int> value);
-    partial void OnMATINH_THANHChanged();
     #endregion
 		
 		public KHACHHANG()
 		{
 			this._PHIEUMUAs = new EntitySet<PHIEUMUA>(new Action<PHIEUMUA>(this.attach_PHIEUMUAs), new Action<PHIEUMUA>(this.detach_PHIEUMUAs));
 			this._TAIKHOANs = new EntitySet<TAIKHOAN>(new Action<TAIKHOAN>(this.attach_TAIKHOANs), new Action<TAIKHOAN>(this.detach_TAIKHOANs));
-			this._TINH_THANH = default(EntityRef<TINH_THANH>);
 			OnCreated();
 		}
 		
@@ -1931,30 +1896,6 @@ namespace demoWeb
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATINH_THANH", DbType="Int")]
-		public System.Nullable<int> MATINH_THANH
-		{
-			get
-			{
-				return this._MATINH_THANH;
-			}
-			set
-			{
-				if ((this._MATINH_THANH != value))
-				{
-					if (this._TINH_THANH.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMATINH_THANHChanging(value);
-					this.SendPropertyChanging();
-					this._MATINH_THANH = value;
-					this.SendPropertyChanged("MATINH_THANH");
-					this.OnMATINH_THANHChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_PHIEUMUA", Storage="_PHIEUMUAs", ThisKey="MAKH", OtherKey="MAKH")]
 		public EntitySet<PHIEUMUA> PHIEUMUAs
 		{
@@ -1978,40 +1919,6 @@ namespace demoWeb
 			set
 			{
 				this._TAIKHOANs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TINH_THANH_KHACHHANG", Storage="_TINH_THANH", ThisKey="MATINH_THANH", OtherKey="MATINH_THANH", IsForeignKey=true)]
-		public TINH_THANH TINH_THANH
-		{
-			get
-			{
-				return this._TINH_THANH.Entity;
-			}
-			set
-			{
-				TINH_THANH previousValue = this._TINH_THANH.Entity;
-				if (((previousValue != value) 
-							|| (this._TINH_THANH.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TINH_THANH.Entity = null;
-						previousValue.KHACHHANGs.Remove(this);
-					}
-					this._TINH_THANH.Entity = value;
-					if ((value != null))
-					{
-						value.KHACHHANGs.Add(this);
-						this._MATINH_THANH = value.MATINH_THANH;
-					}
-					else
-					{
-						this._MATINH_THANH = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TINH_THANH");
-				}
 			}
 		}
 		
@@ -3853,7 +3760,7 @@ namespace demoWeb
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOTASANPHAM", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOTASANPHAM", DbType="NVarChar(MAX)")]
 		public string MOTASANPHAM
 		{
 			get

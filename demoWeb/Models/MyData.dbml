@@ -15,7 +15,6 @@
       <Column Name="MATINH_THANH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENTINH_THANH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="MAQUAN_HUYEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TINH_THANH_KHACHHANG" Member="KHACHHANGs" ThisKey="MATINH_THANH" OtherKey="MATINH_THANH" Type="KHACHHANG" />
       <Association Name="TINH_THANH_PHIEUMUA" Member="PHIEUMUAs" ThisKey="MATINH_THANH" OtherKey="MATINH_THANH" Type="PHIEUMUA" />
       <Association Name="QUAN_HUYEN_TINH_THANH" Member="QUAN_HUYEN" ThisKey="MAQUAN_HUYEN" OtherKey="MAQUAN_HUYEN" Type="QUAN_HUYEN" IsForeignKey="true" />
     </Type>
@@ -77,10 +76,8 @@
       <Column Name="SDT" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="GMAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DIACHI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MATINH_THANH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="KHACHHANG_PHIEUMUA" Member="PHIEUMUAs" ThisKey="MAKH" OtherKey="MAKH" Type="PHIEUMUA" />
       <Association Name="KHACHHANG_TAIKHOAN" Member="TAIKHOANs" ThisKey="MAKH" OtherKey="MAKH" Type="TAIKHOAN" />
-      <Association Name="TINH_THANH_KHACHHANG" Member="TINH_THANH" ThisKey="MATINH_THANH" OtherKey="MATINH_THANH" Type="TINH_THANH" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.KHUYENMAI" Member="KHUYENMAIs">
@@ -172,7 +169,7 @@
       <Column Name="BAOHANH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HINH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SOLUONGTON" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MOTASANPHAM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MOTASANPHAM" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="SANPHAM_CT_HOADON" Member="CT_HOADONs" ThisKey="MASANPHAM" OtherKey="MASANPHAM" Type="CT_HOADON" />
       <Association Name="SANPHAM_CT_KHUYENMAI" Member="CT_KHUYENMAIs" ThisKey="MASANPHAM" OtherKey="MASANPHAM" Type="CT_KHUYENMAI" />

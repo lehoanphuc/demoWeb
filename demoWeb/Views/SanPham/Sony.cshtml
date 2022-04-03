@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<demoWeb.Models.SANPHAM>
 @{
-    ViewBag.Title = "Menu";
+    ViewBag.Title = "Sony";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,7 +16,7 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="">
 
-    
+
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
@@ -41,7 +41,7 @@
         <div class="bg-box">
             <img src="~/Content/images/hero-bg.jpg" alt="">
         </div>
-         
+
         <!-- header section strats -->
         <header class="header_section">
             <div class="container">
@@ -157,12 +157,12 @@
 
             <ul class="filters_menu">
 
-                <li class="active" data-filter="*"><a href="https://localhost:44359/Home/Menu">All</a></li>
+                <li data-filter="*"><a href="https://localhost:44359/Home/Menu">All</a></li>
                 <li data-filter=".nikon"><a href="https://localhost:44359/SanPham/Nikon">Nikon</a></li>
 
                 <li data-filter=".canon"><a href="https://localhost:44359/SanPham/Canon">Canon</a></li>
 
-                <li data-filter=".sony"><a href="https://localhost:44359/SanPham/Sony">Sony</a></li>
+                <li class="active" data-filter=".sony"><a href="https://localhost:44359/SanPham/Sony">Sony</a></li>
                 <li data-filter=".lens"><a href="https://localhost:44359/SanPham/Lens">Lens</a></li>
             </ul>
 
@@ -199,15 +199,15 @@
                 </div>
             </div>
 
-            </div>
+        </div>
 
-            <div>
-                <div class="btn-box">
-                    <a href="">
-                        View More
-                    </a>
-                </div>
+        <div>
+            <div class="btn-box">
+                <a href="">
+                    View More
+                </a>
             </div>
+        </div>
     </section>
 
     <!-- end food section -->

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<demoWeb.Models.SANPHAM>
 @{
-    ViewBag.Title = "Menu";
+    ViewBag.Title = "Lens";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,7 +16,7 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="">
 
-    
+
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
@@ -41,7 +41,7 @@
         <div class="bg-box">
             <img src="~/Content/images/hero-bg.jpg" alt="">
         </div>
-         
+
         <!-- header section strats -->
         <header class="header_section">
             <div class="container">
@@ -154,60 +154,58 @@
                     Sản phẩm của chúng tôi
                 </h2>
             </div>
+                <ul class="filters_menu">
 
-            <ul class="filters_menu">
+                    <li data-filter="*"><a href="https://localhost:44359/Home/Menu">All</a></li>
+                    <li data-filter=".nikon"><a href="https://localhost:44359/SanPham/Nikon">Nikon</a></li>
 
-                <li class="active" data-filter="*"><a href="https://localhost:44359/Home/Menu">All</a></li>
-                <li data-filter=".nikon"><a href="https://localhost:44359/SanPham/Nikon">Nikon</a></li>
+                    <li data-filter=".canon"><a href="https://localhost:44359/SanPham/Canon">Canon</a></li>
 
-                <li data-filter=".canon"><a href="https://localhost:44359/SanPham/Canon">Canon</a></li>
+                    <li data-filter=".sony"><a href="https://localhost:44359/SanPham/Sony">Sony</a></li>
+                    <li class="active" data-filter=".lens"><a href="https://localhost:44359/SanPham/Lens">Lens</a></li>
+                </ul>
+                <div class="filters-content">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-6 col-lg-4 all pizza">
 
-                <li data-filter=".sony"><a href="https://localhost:44359/SanPham/Sony">Sony</a></li>
-                <li data-filter=".lens"><a href="https://localhost:44359/SanPham/Lens">Lens</a></li>
-            </ul>
-
-            <div class="filters-content">
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-sm-6 col-lg-4 all pizza">
-
-                            <div class="box">
-                                <div>
-                                    <div class="img-box">
-                                        <img src="@item.HINH" alt="thumbnails" />
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            @item.TENSANPHAM
-                                        </h5>
-                                        <p>
-                                            @item.MOTASANPHAM
-                                        </p>
-                                        <div class="options">
-                                            <h6>
-                                                <bdo>$</bdo> @item.GIABAN <bdo>VNĐ</bdo>
-                                            </h6>
-                                            <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.MASANPHAM, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                                <div class="box">
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="@item.HINH" alt="thumbnails" />
+                                        </div>
+                                        <div class="detail-box">
+                                            <h5>
+                                                @item.TENSANPHAM
+                                            </h5>
+                                            <p>
+                                                @item.MOTASANPHAM
+                                            </p>
+                                            <div class="options">
+                                                <h6>
+                                                    <bdo>$</bdo> @item.GIABAN <bdo>VNĐ</bdo>
+                                                </h6>
+                                                <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.MASANPHAM, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
-            </div>
 
             </div>
 
-            <div>
-                <div class="btn-box">
-                    <a href="">
-                        View More
-                    </a>
-                </div>
+        <div>
+            <div class="btn-box">
+                <a href="">
+                    View More
+                </a>
             </div>
+        </div>
     </section>
 
     <!-- end food section -->

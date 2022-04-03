@@ -567,9 +567,9 @@ a:focus {
 }
 
 .food_section .box .options a {
-  width: 40px;
+  width: 100px;
   height: 40px;
-  border-radius: 100%;
+  border-radius: -10%;
   background: #ffbe33;
   display: -webkit-box;
   display: -ms-flexbox;

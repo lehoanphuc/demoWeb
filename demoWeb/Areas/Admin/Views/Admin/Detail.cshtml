@@ -1,0 +1,91 @@
+﻿@model demoWeb.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">CHI TIẾT SẢN PHẨM</h2>
+
+<div style="margin-left:200px">
+    <h4>SẢN PHẨM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSANPHAM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSANPHAM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIABAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIABAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIAGIAM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIAGIAM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THONGSOKYTHUAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THONGSOKYTHUAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BAOHANH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BAOHANH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HINH)
+        </dt>
+
+        <dd>
+            <img src="@Model.HINH" alt="hinh thumbnail" style="width:200px"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONGTON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONGTON)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOTASANPHAM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTASANPHAM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MALOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MALOAI)
+        </dd>
+
+    </dl>
+</div>
+<p style="text-align:center">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MASANPHAM }) |
+    @Html.ActionLink("Back to List", "ListSP")
+</p>

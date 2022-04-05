@@ -1,0 +1,96 @@
+﻿@model demoWeb.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body style="background-color: #283747">
+    <h2 style="text-align:center; color:red">XOÁ SẢN PHẨM </h2>
+    <div style="margin-left: 40%; color: wheat">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TENSANPHAM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TENSANPHAM)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GIABAN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GIABAN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GIAGIAM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GIAGIAM)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.THONGSOKYTHUAT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.THONGSOKYTHUAT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BAOHANH)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BAOHANH)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HINH)
+            </dt>
+
+            <dd>
+                <img src="@Model.HINH" alt="hinh thumbnail" style="width:200px" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SOLUONGTON)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SOLUONGTON)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MOTASANPHAM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MOTASANPHAM)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MALOAI)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MALOAI)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" style="color:red"/> |
+                @Html.ActionLink("Back to List", "ListSP")
+            </div>
+        }
+    </div>
+</body>

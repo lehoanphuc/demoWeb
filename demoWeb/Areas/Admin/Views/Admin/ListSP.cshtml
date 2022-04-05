@@ -1,0 +1,46 @@
+﻿@model IEnumerable<demoWeb.Models.SANPHAM>
+@{
+    ViewBag.Title = "ListSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>THÔNG TIN SẢN PHẨM</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th> Mã sản phẩm </th>
+        <th> Tên sản phẩm</th>
+        <th> Giá bán</th>
+        <th> Giá giảm</th>
+        <th> Thông số kỹ thuật</th>
+        <th> Bảo hành</th>
+        <th> Hình </th>
+        <th> Số lượng tồn</th>
+        <th> Mô tả sản phẩm </th>
+        <th> Mã loại</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@Html.DisplayFor(modelItem => item.MASANPHAM)</td>
+    <td>@Html.DisplayFor(modelItem => item.TENSANPHAM)</td>
+    <td>@Html.DisplayFor(modelItem => item.GIABAN)</td>
+    <td>@Html.DisplayFor(modelItem => item.GIAGIAM)</td>
+    <td>@Html.DisplayFor(modelItem => item.THONGSOKYTHUAT)</td>
+    <td>@Html.DisplayFor(modelItem => item.BAOHANH)</td>
+    <td><img src="@item.HINH" alt="hinh thumbnail" style="width:200px" /></td>
+    <td>@Html.DisplayFor(modelItem => item.SOLUONGTON)</td>
+    <td>@Html.DisplayFor(modelItem => item.MOTASANPHAM)</td>
+    <td>@Html.DisplayFor(modelItem => item.MALOAI)</td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.MASANPHAM }) |
+        @Html.ActionLink("Detail", "Detail", new { id = item.MASANPHAM }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MASANPHAM })
+    </td>
+</tr>
+    }
+</table>
+

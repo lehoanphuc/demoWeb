@@ -6,7 +6,7 @@ using demoWeb.Models;
 
 namespace demoWeb.Models
 {
-    public class Giohang
+    public class GioHang
     {
         MyDataDataContext data = new MyDataDataContext();
         public int MaSP { get; set; }
@@ -18,7 +18,7 @@ namespace demoWeb.Models
         {
             get { return SoLuong * GiaSP; }
         }
-        public Giohang(int id)
+        public GioHang(int id)
         {
             MaSP = id;
             SANPHAM sanpham = data.SANPHAMs.Single(n => n.MASANPHAM == MaSP);

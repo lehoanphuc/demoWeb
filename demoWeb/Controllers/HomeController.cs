@@ -6,15 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Helpers;
 
 namespace demoWeb.Controllers
 {
     public class HomeController : Controller
     {
         MyDataDataContext data = new MyDataDataContext();
- 
-        public ActionResult Index(int ? page)
+
+        public ActionResult Index(int? page, string searchString, string searchKey)
         {
+            ViewBag.Keyword = searchString;
             if (page == null) page = 1;
             var all_sanPham = (from tt in data.SANPHAMs select tt).OrderBy(m => m.MASANPHAM);
             int pageSize = 6;
@@ -22,6 +26,12 @@ namespace demoWeb.Controllers
             return View(all_sanPham.ToPagedList(pageNum, pageSize));
 
         }
+        //public static List<SANPHAM> GetAll(string searchKey)
+        //{
+        //    MyDataDataContext data = new MyDataDataContext();
+        //    searchKey = searchKey + "";
+        //    return data.SANPHAMs.Where(p => p.TENSANPHAM.Contains(searchKey)).ToList();
+        //}
 
         public ActionResult About()
         {
@@ -29,11 +39,42 @@ namespace demoWeb.Controllers
 
             return View();
         }
-
+        //public class MailInfor{
+        //    public string From { get; set; }
+        //    public string To { get; set; }
+        //    public string Subject { get; set; }
+        //    public string Body { get; set; }
+        //}
         public ActionResult Book()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Book(string userEmail)
+        {
+            //string From = Request["From"];
+            //string Password = Request["Password"];
+            //string To = Request["To"];
+            string Subject = Request["HoTen"];
+            string Body = Request["NoiDung"];
+            //var username = "hoanphucle2001@gmail.com";
+            //string Body = Request["Body"];
 
+            //var mail = new SmtpClient("smtp.gmail.com", 587);
+            //{
+            //    mail.Credentials = new NetworkCredential(From, Password);
+            //   mail.EnableSsl = true;
+            //};
+            //var message = new MailMessage();
+            //message.From = new MailAddress(From);
+            //message.ReplyToList.Add(From);
+            //message.To.Add(new MailAddress(To));
+
+            //message.Subject = Subject;
+            //message.Body = Body;
+            //mail.Send(message);
+            WebMail.Send(userEmail, Subject, Body, null, null, null, true, null, null, null, null, null, null);
+            ViewBag.msg = " Đã gửi email thành công... Cảm ơn quý khách đã phản hồi.";
             return View();
         }
 

@@ -114,148 +114,156 @@
         </header>
         <!-- end header section -->
     </div>
+    @if(ViewBag.msg != null)
+            {
+                <div class="alert alert-success">@ViewBag.msg</div> 
+            }
+    @using (Html.BeginForm())
+    {
+        <!-- book section -->
+        <section class="book_section layout_padding">
+            <div class="container">
+                <div class="heading_container">
+                    <h2>
+                        Liên hệ với cửa hàng
+                    </h2>
+                </div>
 
-    <!-- book section -->
-    <section class="book_section layout_padding">
-        <div class="container">
-            <div class="heading_container">
-                <h2>
-                    Liên hệ với cửa hàng
-                </h2>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form_container">
-                        <form action="">
-                            <div>
-                                <input type="text" class="form-control" placeholder="Họ và Tên của quý khách" />
-                            </div>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Số điện thoại của quý khách" />
-                            </div>
-                            <div>
-                                <input type="email" class="form-control" placeholder="Email của quý khách" />
-                            </div>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Viết mô tả của quý khách" />
-                            </div>
-                           
-                            <div class="btn_box">
-                                <button>
-                                    Gửi cho chúng tôi
-                                </button>
-                            </div>
-                        </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="">
+                                <div>
+                                    <input name="HoTen" type="text" class="form-control" placeholder="Họ và Tên của quý khách" />
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Số điện thoại của quý khách" />
+                                </div>
+                                <div>
+                                    <input name="userEmail" type="email" class="form-control" placeholder="Email của quý khách" />
+                                </div>
+                                <div>
+                                    <input name="NoiDung" type="text" class="form-control" placeholder="Viết mô tả của quý khách" />
+                                </div>
+
+                                <div class="btn_box">
+                                    <button>
+                                        Gửi cho chúng tôi
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="map_container ">
+                            <div id="googleMap"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="map_container ">
-                        <div id="googleMap"></div>
-                    </div>
-                </div>
+                
             </div>
-        </div>
-    </section>
-    <!-- end book section -->
-    <!-- footer section -->
-    <footer class="footer_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-col">
-                    <div class="footer_contact">
+        </section>
+    }
+        <!-- end book section -->
+        <!-- footer section -->
+        <footer class="footer_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-col">
+                        <div class="footer_contact">
+                            <h4>
+                                Liên hệ chúng tôi
+                            </h4>
+                            <div class="contact_link_box">
+                                <a href="">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>
+                                        Vị trí cửa hàng trên Google Map
+                                    </span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>
+                                        Hotline: 0397921794
+                                    </span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>
+                                        hoanphucle2001@gmail.com
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 footer-col">
+                        <div class="footer_detail">
+                            <a href="" class="footer-logo">
+                                Digitals Store
+                            </a>
+                            <p>
+                                “Bạn không thể chỉ hỏi khách hàng xem họ muốn gì và rồi cố đem nó cho họ. Tới lúc bạn hoàn thiện nó, họ đã muốn thứ mới mẻ khác rồi.” – Steve Jobs
+                            </p>
+                            <div class="footer_social">
+                                <a href="">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 footer-col">
                         <h4>
-                            Liên hệ chúng tôi
+                            Giờ mở cửa
                         </h4>
-                        <div class="contact_link_box">
-                            <a href="">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span>
-                                    Vị trí cửa hàng trên Google Map
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    Hotline: 0397921794
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>
-                                    hoanphucle2001@gmail.com
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 footer-col">
-                    <div class="footer_detail">
-                        <a href="" class="footer-logo">
-                            Digitals Store
-                        </a>
                         <p>
-                            “Bạn không thể chỉ hỏi khách hàng xem họ muốn gì và rồi cố đem nó cho họ. Tới lúc bạn hoàn thiện nó, họ đã muốn thứ mới mẻ khác rồi.” – Steve Jobs
+                            Từ Thứ 2 - Thứ 7
                         </p>
-                        <div class="footer_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-pinterest" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        <p>
+                            10.00 Am -10.00 Pm
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-4 footer-col">
-                    <h4>
-                        Giờ mở cửa
-                    </h4>
+                <div class="footer-info">
                     <p>
-                        Từ Thứ 2 - Thứ 7
-                    </p>
-                    <p>
-                        10.00 Am -10.00 Pm
+                        &copy; <span id="displayYear"></span> Copyright By
+                        <a href="https://facebook.com.lhp.hutech">lehoanphuc</a><br><br>
                     </p>
                 </div>
             </div>
-            <div class="footer-info">
-                <p>
-                    &copy; <span id="displayYear"></span> Copyright By
-                    <a href="https://facebook.com.lhp.hutech">lehoanphuc</a><br><br>
-                </p>
-            </div>
-        </div>
-    </footer>
-    <!-- footer section -->
-    <!-- jQery -->
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <!-- popper js -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <!-- bootstrap js -->
-    <script src="~/Scripts/bootstrap.js"></script>
-    <!-- owl slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-    </script>
-    <!-- isotope js -->
-    <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-    <!-- nice select -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-    <!-- custom js -->
-    <script src="~/Scripts/custom.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-    </script>
-    <!-- End Google Map -->
+        </footer>
+        <!-- footer section -->
+        <!-- jQery -->
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <!-- popper js -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <!-- bootstrap js -->
+        <script src="~/Scripts/bootstrap.js"></script>
+        <!-- owl slider -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+        </script>
+        <!-- isotope js -->
+        <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+        <!-- nice select -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+        <!-- custom js -->
+        <script src="~/Scripts/custom.js"></script>
+        <!-- Google Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+        </script>
+        <!-- End Google Map -->
 
-</body>
+    </body>
 

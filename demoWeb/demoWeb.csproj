@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -209,12 +210,18 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ListSP.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\CreateNV.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\ListNV.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\EditNV.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\DeleteNV.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\DetailNV.cshtml" />
     <None Include="Models\MyData.dbml.layout">
       <DependentUpon>MyData.dbml</DependentUpon>
     </None>

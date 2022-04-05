@@ -1,8 +1,10 @@
-﻿@model IEnumerable<demoWeb.Models.SANPHAM>
+﻿@model demoWeb.Models.NHANVIEN
+
 @{
-    ViewBag.Title = "ListSP";
+    ViewBag.Title = "EditNV";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
@@ -60,10 +62,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="https://localhost:44359/Admin/Admin/Login">Thông tin cá nhân </a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link active" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
-                            </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
+                            </li>
+                            <li class="nav-item active">
                                 <a class="nav-link" href="https://localhost:44359/Admin/NhanVien/ListNV">Quản lý nhân viên</a>
                             </li>
                         </ul>
@@ -85,50 +87,74 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Danh sách các sản phẩm của cửa hàng
+                    Chỉnh sửa thông tin nhân viên
                 </h2>
             </div>
 
             <div class="filters-content">
                 <div class="row" style="background-color: #F4ECF7;">
-                    <p style="background-color: #E74C3C; border-radius: 5px; padding: 10px; color: darkred; margin-left: 45%;">
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
-                    <table class="table">
-                        <tr>
-                            <th style="text-align:center"> Mã sản phẩm </th>
-                            <th style="text-align:center"> Tên sản phẩm</th>
-                            <th style="text-align:center"> Giá bán</th>
-                            <th style="text-align:center"> Giá giảm</th>
-                            <th style="text-align:center"> Thông số kỹ thuật</th>
-                            <th style="text-align:center"> Bảo hành</th>
-                            <th style="text-align:center"> Hình </th>
-                            <th style="text-align:center"> Số lượng tồn</th>
-                            <th style="text-align:center"> Mô tả sản phẩm </th>
-                            <th style="text-align:center"> Mã loại</th>
-                            <th style="text-align:left"> Tác vụ</th>
-                        </tr>
-                        @foreach (var item in Model)
+                    <a style="color:black; width: 50%;margin-left: 200px;">
+                        @using (Html.BeginForm())
                         {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.MASANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TENSANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GIABAN)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GIAGIAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.THONGSOKYTHUAT)</td>
-                                <td>@Html.DisplayFor(modelItem => item.BAOHANH)</td>
-                                <td><img src="@item.HINH" alt="hinh thumbnail" style="width:200px" /></td>
-                                <td>@Html.DisplayFor(modelItem => item.SOLUONGTON)</td>
-                                <td>@Html.DisplayFor(modelItem => item.MOTASANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.MALOAI)</td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.MASANPHAM }) |
-                                    @Html.ActionLink("Detail", "Detail", new { id = item.MASANPHAM }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.MASANPHAM })
-                                </td>
-                            </tr>
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.MANV)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TENNV, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TENNV, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TENNV, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GIOITINH, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GIOITINH, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DIACHI, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TRANGTHAI, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TRANGTHAI, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input style="background-color: yellow; border-radius:7px;" type="submit" value="Lưu thông tin" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
                         }
-                    </table>
+
+                    <div style="margin-top: 100px">
+                        @Html.ActionLink("Back to List", "ListNV")
+                    </div>
+
+                    </a>
                 </div>
             </div>
         </div>
@@ -236,6 +262,5 @@
     <!-- End Google Map -->
 
 </body>
-
 
 

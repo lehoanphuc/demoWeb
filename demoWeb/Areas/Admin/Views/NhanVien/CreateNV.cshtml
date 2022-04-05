@@ -1,6 +1,7 @@
-﻿@model IEnumerable<demoWeb.Models.SANPHAM>
+﻿@model demoWeb.Models.TAIKHOAN
+
 @{
-    ViewBag.Title = "ListSP";
+    ViewBag.Title = "CreateNV";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
@@ -23,7 +24,7 @@
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <!-- nice select  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+a3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
     <!-- font awesome style -->
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 
@@ -60,10 +61,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="https://localhost:44359/Admin/Admin/Login">Thông tin cá nhân </a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link active" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
-                            </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
+                            </li>
+                            <li class="nav-item active">
                                 <a class="nav-link" href="https://localhost:44359/Admin/NhanVien/ListNV">Quản lý nhân viên</a>
                             </li>
                         </ul>
@@ -85,50 +86,72 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Danh sách các sản phẩm của cửa hàng
+                    Tạo nhân viên mới
                 </h2>
             </div>
 
             <div class="filters-content">
                 <div class="row" style="background-color: #F4ECF7;">
-                    <p style="background-color: #E74C3C; border-radius: 5px; padding: 10px; color: darkred; margin-left: 45%;">
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
-                    <table class="table">
-                        <tr>
-                            <th style="text-align:center"> Mã sản phẩm </th>
-                            <th style="text-align:center"> Tên sản phẩm</th>
-                            <th style="text-align:center"> Giá bán</th>
-                            <th style="text-align:center"> Giá giảm</th>
-                            <th style="text-align:center"> Thông số kỹ thuật</th>
-                            <th style="text-align:center"> Bảo hành</th>
-                            <th style="text-align:center"> Hình </th>
-                            <th style="text-align:center"> Số lượng tồn</th>
-                            <th style="text-align:center"> Mô tả sản phẩm </th>
-                            <th style="text-align:center"> Mã loại</th>
-                            <th style="text-align:left"> Tác vụ</th>
-                        </tr>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.MASANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TENSANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GIABAN)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GIAGIAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.THONGSOKYTHUAT)</td>
-                                <td>@Html.DisplayFor(modelItem => item.BAOHANH)</td>
-                                <td><img src="@item.HINH" alt="hinh thumbnail" style="width:200px" /></td>
-                                <td>@Html.DisplayFor(modelItem => item.SOLUONGTON)</td>
-                                <td>@Html.DisplayFor(modelItem => item.MOTASANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.MALOAI)</td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.MASANPHAM }) |
-                                    @Html.ActionLink("Detail", "Detail", new { id = item.MASANPHAM }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.MASANPHAM })
-                                </td>
-                            </tr>
-                        }
-                    </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        <div style="margin-left: 250px">
+                            <div style="height:40px; margin-top: 20px;">
+                                <a style="margin-left: 100px">Họ tên nhân viên:</a>
+                                <a style="margin-left: 50px; max-width: 500px;">
+                                    @Html.TextBox("TENNV")
+                                    @ViewData["Error1"]
+                                </a>
+                            </div>
+                            <div style="height:40px">
+                                <a style="margin-left: 100px">Số điện thoại:</a>
+                                <a style="margin-left: 80px">
+                                    @Html.TextBox("SDT")
+                                    @ViewData["Error2"]
+                                </a>
+                            </div>
+                            <div style="height:40px">
+                                <a style="margin-left: 100px">Giới tính:</a>
+                                <a style="margin-left: 114px">
+                                    @Html.TextBox("GIOITINH")
+                                </a>
+                            </div>
+                            <div style="height:40px">
+                                <a style="margin-left: 100px">Địa chỉ:</a>
+                                <a style="margin-left: 128px">
+                                    @Html.TextBox("DIACHI")
+                                    @ViewData["Error3"]
+                                </a>
+                            </div>
+                            <div style="height:40px">
+                                <a style="margin-left: 100px">Trang thái:</a>
+                                <a style="margin-left: 103px">
+                                    @Html.TextBox("TRANGTHAI")
+                                </a>
+                            </div>
+                            <div style="height:40px">
+                                <a style="margin-left: 100px">Tên đăng nhập:</a>
+                                <a style="margin-left: 67px">
+                                    @Html.TextBox("USERNAME")
+                                    @ViewData["Error4"]
+                                </a>
+                            </div>
+                            <div style="height:40px">
+                                <a style="margin-left: 100px">Mật khẩu:</a>
+                                <a style="margin-left: 109px">
+                                    @Html.TextBox("PASS")
+                                    @ViewData["Error5"]
+                                </a>
+                            </div>
+
+                            <div style="height:40px">
+                                <a></a>
+                                <a>
+                                    <input style="margin-left: 200px; background-color: #5DADE2" type="Submit" value="Tạo nhân viên" />
+                                </a>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -236,6 +259,4 @@
     <!-- End Google Map -->
 
 </body>
-
-
 

@@ -17,7 +17,7 @@ namespace demoWeb.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "ListSP", Controller ="Admin", id = UrlParameter.Optional }
+                new { action = "Login", Controller ="Admin", id = UrlParameter.Optional }
             );
         }
     }

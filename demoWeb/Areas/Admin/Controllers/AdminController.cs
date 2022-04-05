@@ -111,5 +111,42 @@ namespace demoWeb.Areas.Admin.Controllers
             data.SubmitChanges();
             return RedirectToAction("ListSP");
         }
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(FormCollection collection)
+        {
+            var tendn = collection["USERNAME"];
+            var matkhau = collection["PASS"];
+            if (String.IsNullOrEmpty(tendn))
+            {
+                ViewData["Error1"] = "Phải nhập tên đăng nhập";
+            }
+            else if (String.IsNullOrEmpty(matkhau))
+            {
+                ViewData["Error2"] = "Phải nhập mật khẩu";
+            }
+            else
+            {
+                // Gán giá trị cho đối tượng được tạo mới(kh)
+                TAIKHOAN kh = data.TAIKHOANs.SingleOrDefault(n => n.USERNAME == tendn && n.PASS == matkhau && n.QUYEN == 0);
+                if (kh != null)
+                {
+                    Session["TaiKhoan"] = kh;
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                else
+                    ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
+            }
+            return View();
+        }
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+        
     }
 }

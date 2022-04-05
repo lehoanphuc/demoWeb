@@ -1,8 +1,9 @@
-﻿@model IEnumerable<demoWeb.Models.SANPHAM>
+﻿@model IEnumerable<demoWeb.Models.NHANVIEN>
 @{
-    ViewBag.Title = "ListSP";
+    ViewBag.Title = "ListNV";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
@@ -60,10 +61,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="https://localhost:44359/Admin/Admin/Login">Thông tin cá nhân </a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link active" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
-                            </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
+                            </li>
+                            <li class="nav-item active">
                                 <a class="nav-link" href="https://localhost:44359/Admin/NhanVien/ListNV">Quản lý nhân viên</a>
                             </li>
                         </ul>
@@ -85,46 +86,38 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Danh sách các sản phẩm của cửa hàng
+                    Danh sách các nhân viên của cửa hàng
                 </h2>
             </div>
 
             <div class="filters-content">
                 <div class="row" style="background-color: #F4ECF7;">
                     <p style="background-color: #E74C3C; border-radius: 5px; padding: 10px; color: darkred; margin-left: 45%;">
-                        @Html.ActionLink("Create New", "Create")
+                        @Html.ActionLink("Tạo Nhân Viên", "CreateNV")
                     </p>
                     <table class="table">
                         <tr>
-                            <th style="text-align:center"> Mã sản phẩm </th>
-                            <th style="text-align:center"> Tên sản phẩm</th>
-                            <th style="text-align:center"> Giá bán</th>
-                            <th style="text-align:center"> Giá giảm</th>
-                            <th style="text-align:center"> Thông số kỹ thuật</th>
-                            <th style="text-align:center"> Bảo hành</th>
-                            <th style="text-align:center"> Hình </th>
-                            <th style="text-align:center"> Số lượng tồn</th>
-                            <th style="text-align:center"> Mô tả sản phẩm </th>
-                            <th style="text-align:center"> Mã loại</th>
-                            <th style="text-align:left"> Tác vụ</th>
+                            <th style="text-align: left"> Mã nhân viên </th>
+                            <th style="text-align: left"> Tên nhân viên</th>
+                            <th style="text-align: left"> Số điện thoại</th>
+                            <th style="text-align: left"> Giới tính</th>
+                            <th style="text-align: left"> Địa chỉ</th>
+                            <th style="text-align: left"> Trạng thái</th>
+                            <th style="text-align: left"> Tác vụ</th>
                         </tr>
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.MASANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TENSANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GIABAN)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GIAGIAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.THONGSOKYTHUAT)</td>
-                                <td>@Html.DisplayFor(modelItem => item.BAOHANH)</td>
-                                <td><img src="@item.HINH" alt="hinh thumbnail" style="width:200px" /></td>
-                                <td>@Html.DisplayFor(modelItem => item.SOLUONGTON)</td>
-                                <td>@Html.DisplayFor(modelItem => item.MOTASANPHAM)</td>
-                                <td>@Html.DisplayFor(modelItem => item.MALOAI)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MANV)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TENNV)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SDT)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GIOITINH)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DIACHI)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TRANGTHAI)</td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.MASANPHAM }) |
-                                    @Html.ActionLink("Detail", "Detail", new { id = item.MASANPHAM }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.MASANPHAM })
+                                    @Html.ActionLink("Edit", "EditNV", new { id = item.MANV }) |
+                                    @Html.ActionLink("Detail", "DetailNV", new { id = item.MANV }) |
+                                    @Html.ActionLink("Delete", "DeleteNV", new { id = item.MANV })
                                 </td>
                             </tr>
                         }
@@ -236,6 +229,4 @@
     <!-- End Google Map -->
 
 </body>
-
-
 

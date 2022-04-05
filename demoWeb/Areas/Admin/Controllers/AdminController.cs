@@ -132,7 +132,7 @@ namespace demoWeb.Areas.Admin.Controllers
             else
             {
                 // Gán giá trị cho đối tượng được tạo mới(kh)
-                TAIKHOAN kh = data.TAIKHOANs.SingleOrDefault(n => n.USERNAME == tendn && n.PASS == matkhau && n.QUYEN == 0);
+                TAIKHOAN kh = data.TAIKHOANs.SingleOrDefault(n => n.USERNAME == tendn && n.PASS == matkhau /*&& n.QUYEN == 0*/);
                 if (kh != null)
                 {
                     Session["TaiKhoan"] = kh;

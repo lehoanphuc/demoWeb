@@ -16,8 +16,9 @@ namespace demoWeb.Controllers
     {
         MyDataDataContext data = new MyDataDataContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchString, string searchKey)
         {
+            ViewBag.Keyword = searchString;
             if (page == null) page = 1;
             var all_sanPham = (from tt in data.SANPHAMs select tt).OrderBy(m => m.MASANPHAM);
             int pageSize = 6;
@@ -25,6 +26,12 @@ namespace demoWeb.Controllers
             return View(all_sanPham.ToPagedList(pageNum, pageSize));
 
         }
+        //public static List<SANPHAM> GetAll(string searchKey)
+        //{
+        //    MyDataDataContext data = new MyDataDataContext();
+        //    searchKey = searchKey + "";
+        //    return data.SANPHAMs.Where(p => p.TENSANPHAM.Contains(searchKey)).ToList();
+        //}
 
         public ActionResult About()
         {
@@ -53,11 +60,11 @@ namespace demoWeb.Controllers
             //var username = "hoanphucle2001@gmail.com";
             //string Body = Request["Body"];
 
-            var mail = new SmtpClient("smtp.gmail.com", 587);
-            {
-                mail.Credentials = new NetworkCredential(From, Password);
-               mail.EnableSsl = true;
-            };
+            //var mail = new SmtpClient("smtp.gmail.com", 587);
+            //{
+            //    mail.Credentials = new NetworkCredential(From, Password);
+            //   mail.EnableSsl = true;
+            //};
             //var message = new MailMessage();
             //message.From = new MailAddress(From);
             //message.ReplyToList.Add(From);

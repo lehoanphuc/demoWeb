@@ -9,6 +9,7 @@ using PagedList;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Helpers;
+using System.Threading.Tasks;
 
 namespace demoWeb.Controllers
 {
@@ -90,11 +91,34 @@ namespace demoWeb.Controllers
         {
             return View();
         }
+        //public async Task<ActionResult> Register(RegisterViewModel model)
+        //{
+        //    Mail email = new Mail();
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+        //        var result = await UserManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //            email.to = new MailAddress(model.Email);
+        //            email.body = "Xin chào" + model.Firstname + " tài khoản của bạn đã được tạo <br/> Username: " + model.UserName + " <br/>Password: " + model.Password.ToString() + " <br/> hihi";
+        //            ViewBag.Feed = email.reg();
+        //            await SignInAsync(user, isPersistent: false);
+
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        else
+        //        {
+        //            AddErrors(result);
+        //        }
+        //    }
+
+        //    return View(model);
+        //}
         [HttpPost]
         public ActionResult Register(FormCollection collection, KHACHHANG kh, TAIKHOAN tk)
         {
             var TenKH = collection["TENKHACHHANG"];
-            var username = collection["USERNAME"];
             var pass = collection["PASS"];
             var Gmail = collection["GMAIL"];
             var sdt = collection["SDT"];
@@ -106,33 +130,29 @@ namespace demoWeb.Controllers
             {
                 ViewData["Error1"] = "Họ tên khách hàng không được để trống";
             }
-            else if (String.IsNullOrEmpty(username))
-            {
-                ViewData["Error2"] = "Phải nhập tên đăng nhập";
-            }
             else if (String.IsNullOrEmpty(pass))
             {
-                ViewData["Error3"] = "Phải nhập mật khẩu";
+                ViewData["Error2"] = "Phải nhập mật khẩu";
             }
             if (String.IsNullOrEmpty(Gmail))
             {
-                ViewData["Error4"] = "Email không được để trống";
+                ViewData["Error3"] = "Email không được để trống";
             }
             if (String.IsNullOrEmpty(sdt))
             {
-                ViewData["Error5"] = "Điện thoại không được để trống";
+                ViewData["Error4"] = "Điện thoại không được để trống";
             }
             if (String.IsNullOrEmpty(GioiTinh))
             {
-                ViewData["Error6"] = "Giới tính không được để trống";
+                ViewData["Error5"] = "Giới tính không được để trống";
             }
             if (String.IsNullOrEmpty(NamSinh))
             {
-                ViewData["Error7"] = "Ngày sinh không được để trống";
+                ViewData["Error6"] = "Ngày sinh không được để trống";
             }
             if (String.IsNullOrEmpty(DiaChi))
             {
-                ViewData["Error8"] = "Địa chỉ không được để trống";
+                ViewData["Error7"] = "Địa chỉ không được để trống";
             }
             
             else
@@ -143,8 +163,8 @@ namespace demoWeb.Controllers
                 kh.DIACHI = DiaChi;
                 kh.SDT = sdt;
                 kh.NAMSINH = DateTime.Parse(NamSinh);
-                tk.USERNAME = username;
                 tk.PASS = pass;
+                tk.USERNAME = Gmail;
 
                 data.KHACHHANGs.InsertOnSubmit(kh);
                 data.SubmitChanges();

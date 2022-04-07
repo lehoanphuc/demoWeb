@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<demoWeb.Models.SANPHAM>;*@
+﻿
 @using PagedList.Mvc;
 @using demoWeb.Models
 @model PagedList.PagedList<SANPHAM>
@@ -69,7 +69,17 @@
                                 <a class="nav-link" href="https://localhost:44359/Home/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/Menu">Sản phẩm</a>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn- dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        SAN PHAM
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                                @*<a class="nav-link" href="https://localhost:44359/Home/Menu">Sản phẩm</a>*@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://localhost:44359/Home/About">Tổng quan</a>
@@ -80,13 +90,15 @@
                         </ul>
                         <div class="user_option">
                             <form class="form-inline">
-                                @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" })) 
+                                @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
                                 {
                                     <div class="container h-100">
                                         <div class="d-flex justify-content-center h-100">
                                             <div class="searchbar">
                                                 <input class="search_input" value="@ViewBag.Keyword" type="text" name="searchString" placeholder="Search...">
-                                                <a href="#"  class="search_icon"><i class="fas fa-search"></i></a>
+                                                <a href="#" class="search_icon">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +107,10 @@
                             <a href="" class="user_link">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                             </a>
-                            <a  class="cart_link" href="@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")">
+                            <a href="@Url.Action("GioHangPartial","GioHang")" class="user_link">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            </a>
+                            @*<a class="cart_link" href="@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                 <g>
                                 <g>
@@ -147,7 +162,7 @@
                                 <g>
                   </g>
                 </svg>
-                            </a>
+                            </a>*@
 
                             <a href="https://localhost:44359/Home/Login" class="order_online">
                                 Đăng nhập

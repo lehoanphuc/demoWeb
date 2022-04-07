@@ -163,7 +163,8 @@ namespace demoWeb.Controllers
         {
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
             PHIEUMUA dh = new PHIEUMUA();
-            KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+            TAIKHOAN tk = (TAIKHOAN)Session["TaiKhoan"];
+            KHACHHANG kh = new KHACHHANG();
             SANPHAM s = new SANPHAM();
             List<GioHang> gh = Laygiohang();
             var ngaygiao = String.Format("{0:dd/MM/yyyy}", collection["NgayGiao"]);
@@ -267,8 +268,8 @@ namespace demoWeb.Controllers
             string orderInfo = "ĐH" + DateTime.Now.ToString("yyyyMMddHHss");
             string returnUrl = "https://localhost:44394/GioHang/returnUrl";
             string notifyurl = "http://ba1adf48beba.ngrok.io/GioHang/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
-            string amount = "40000";
-            //string amount = double.Parse(TongTien().ToString()).ToString(); 
+            string amount = "12000000";
+            //string amount = decimal.Parse(TongTien().ToString()).ToString(); 
             string orderid = DateTime.Now.Ticks.ToString();
             string requestId = DateTime.Now.Ticks.ToString();
             string extraData = "";
@@ -354,6 +355,7 @@ namespace demoWeb.Controllers
             JObject jmessage = JObject.Parse(responseFromMomo);
 
             return Redirect(jmessage.GetValue("payUrl").ToString());
+
 
 
         }

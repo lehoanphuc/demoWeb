@@ -36,6 +36,7 @@
 
     <!-- Custom styles for this template -->
     <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/dropdownBtn.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="~/Content/responsive.css" rel="stylesheet" />
     <link href="~/Content/styleSearch.css" rel="stylesheet" />
@@ -70,7 +71,17 @@
                                 <a class="nav-link" href="https://localhost:44359/Home/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/Menu">Sản phẩm</a>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn- dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        SAN PHAM
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                                @*<a class="nav-link" href="https://localhost:44359/Home/Menu">Sản phẩm</a>*@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://localhost:44359/Home/About">Tổng quan</a>

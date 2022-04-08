@@ -4,7 +4,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table align="center">
+<link href="~/Content/styleLogin.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+        <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+        <div class="login-form">
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <div class="sign-in-htm">
+
+                    <div class="group">
+                        <label for="ten" class="label">Họ và tên</label>
+                        <input id="ten" type="text" class="input" name="TENKHACHHANG">
+                        @ViewData["Error1"]
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Mật khẩu</label>
+                        <input id="pass" type="password" class="input" name="PASS">
+                        @ViewData["Error2"]
+                    </div>
+                    <div class="group">
+                        <label for="mail" class="label">Tên đăng nhập hoặc gmail</label>
+                        <input id="mail" type="email" class="input" name="GMAIL">
+                        @ViewData["Error3"]
+                    </div>
+                    <div class="group">
+                        <label for="sdt" class="label">Số điện thoại</label>
+                        <input id="sdt" type="tel" class="input" name="SDT">
+                        @ViewData["Error4"]
+                    </div>
+                    <div class="group">
+                        <label for="gioitinh" class="label">Giới tính</label>
+                        <input id="gioitinh" type="text" class="input" name="GIOITINH">
+                        @ViewData["Error5"]
+                    </div>
+                    <div class="group">
+                        <label for="day" class="label">Ngày tháng năm sinh</label>
+                        <input id="day" type="date" class="input" name="NAMSINH">
+                        @ViewData["Error6"]
+                    </div>
+                    <div class="group">
+                        <label for="diachi" class="label">Địa chỉ</label>
+                        <input id="diachi" type="text" class="input" name="DIACHI">
+                        @ViewData["Error7"]
+                    </div>
+                    <a href="#" class="group">
+                        <input type="submit" class="button" value="Đăng ký">
+                    </a>
+
+                    <div class="hr"></div>
+                    <h5 style="color:red; text-align:center"> @ViewBag.ThongBao</h5>
+                    @Html.ActionLink("Đăng nhập", "Login")
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*<table align="center">
     <h2 style="text-align:center">ĐĂNG KÝ THÀNH CÔNG</h2>
     @using (Html.BeginForm())
     {
@@ -64,7 +128,7 @@
                 @ViewData["Error8"]
             </td>
         </tr>
-        
+
         <tr style="height:40px">
             <td></td>
             <td>
@@ -72,5 +136,5 @@
             </td>
         </tr>
     }
-</table>
+</table>*@
 

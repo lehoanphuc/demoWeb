@@ -1,9 +1,9 @@
-﻿@model IEnumerable<demoWeb.Models.SANPHAM>
+﻿@model demoWeb.Models.SANPHAM
+
 @{
-    ViewBag.Title = "Menu";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
@@ -16,7 +16,7 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="">
 
-    
+
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
@@ -41,14 +41,14 @@
         <div class="bg-box">
             <img src="~/Content/images/hero-bg.jpg" alt="">
         </div>
-         
+
         <!-- header section strats -->
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="https://localhost:44359/Home/Index">
+                    <a class="navbar-brand" href="https://localhost:44359/Admin/Admin/ListSP">
                         <span>
-                            Digitals Store
+                            Digitals Store Admin Page
                         </span>
                     </a>
 
@@ -59,43 +59,18 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/Index">Trang chủ </a>
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/Login">Thông tin cá nhân </a>
                             </li>
                             <li class="nav-item active">
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        SẢN PHẨM
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                                
-                                @*<a class="nav-link" href="https://localhost:44359/Home/Menu">Sản phẩm <span class="sr-only">(current)</span> </a>*@
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/About">Tổng quan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/Book">Liên hệ</a>
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/Login">Quản lý nhân viên</a>
                             </li>
                         </ul>
                         <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                            <a href="@Url.Action("GioHangPartial","GioHang")" class="user_link">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </a>
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                            <a href="https://localhost:44359/Home/Login" class="order_online">
-                                Đăng nhập
+                            <a href="https://localhost:44359/Admin/Admin/Login" class="order_online">
+                                Đăng xuất
                             </a>
                         </div>
                     </div>
@@ -111,63 +86,109 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Sản phẩm của chúng tôi
+                    Chi Tiết Sản Phẩm của cửa hàng
                 </h2>
             </div>
 
-            <ul class="filters_menu">
-
-                <li class="active" data-filter="*"><a href="https://localhost:44359/Home/Menu">All</a></li>
-                <li data-filter=".nikon"><a href="https://localhost:44359/SanPham/Nikon">Nikon</a></li>
-
-                <li data-filter=".canon"><a href="https://localhost:44359/SanPham/Canon">Canon</a></li>
-
-                <li data-filter=".sony"><a href="https://localhost:44359/SanPham/Sony">Sony</a></li>
-                <li data-filter=".lens"><a href="https://localhost:44359/SanPham/Lens">Lens</a></li>
-            </ul>
-
             <div class="filters-content">
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-sm-6 col-lg-4 all pizza">
+                <div class="row" style="background-color: #F4ECF7;">
+                    <a style="color:black; width: 50%;">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
 
-                            <div class="box">
-                                <div>
-                                    <div class="img-box">
-                                        <img src="@item.HINH" alt="thumbnails" />
+                            <div class="form-horizontal" style="margin-left:30%">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.MASANPHAM)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TENSANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TENSANPHAM, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            @item.TENSANPHAM
-                                        </h5>
-                                        <p>
-                                            @item.MOTASANPHAM
-                                        </p>
-                                        <div class="options">
-                                            <h6>
-                                                <bdo>$</bdo> @item.GIABAN <bdo>VNĐ</bdo>
-                                            </h6>
-                                            <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.MASANPHAM, @strURL = Request.Url.ToString() })">Đặt mua</a>
-                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GIABAN, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GIABAN, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GIABAN, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GIAGIAM, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GIAGIAM, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GIAGIAM, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.THONGSOKYTHUAT, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.THONGSOKYTHUAT, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.THONGSOKYTHUAT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BAOHANH, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.BAOHANH, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BAOHANH, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.HINH, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.HINH, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.HINH, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SOLUONGTON, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.SOLUONGTON, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SOLUONGTON, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MOTASANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.MOTASANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MOTASANPHAM, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MALOAI, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.MALOAI, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MALOAI, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="margin-left:13%">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input style="color: chartreuse; background-color: #34495E" type="submit" value="Lưu thông tin" class="btn btn-default" />
                                     </div>
                                 </div>
                             </div>
+                        }
 
+                        <div style="text-align: center; margin-top: 300px; background-color: #F39C12; border-radius: 7px;padding: 20px;margin-bottom: 490px;">
+                            @Html.ActionLink("Back to List", "ListSP")
                         </div>
-                    }
-                </div>
-            </div>
-
-            </div>
-
-            <div>
-                <div class="btn-box">
-                    <a href="">
-                        View More
                     </a>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- end food section -->
@@ -272,4 +293,3 @@
     <!-- End Google Map -->
 
 </body>
-

@@ -1,6 +1,6 @@
-﻿@model IEnumerable<demoWeb.Models.SANPHAM>
+﻿@model IEnumerable<demoWeb.Models.NHANVIEN>
 @{
-    ViewBag.Title = "Menu";
+    ViewBag.Title = "ListNV";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,7 +16,7 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="">
 
-    
+
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
@@ -41,14 +41,14 @@
         <div class="bg-box">
             <img src="~/Content/images/hero-bg.jpg" alt="">
         </div>
-         
+
         <!-- header section strats -->
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="https://localhost:44359/Home/Index">
+                    <a class="navbar-brand" href="https://localhost:44359/Admin/Admin/ListSP">
                         <span>
-                            Digitals Store
+                            Digitals Store Admin Page
                         </span>
                     </a>
 
@@ -59,43 +59,18 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/Index">Trang chủ </a>
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/Login">Thông tin cá nhân </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://localhost:44359/Admin/Admin/ListSP">Quản lý sản phẩm <span class="sr-only">(current)</span> </a>
                             </li>
                             <li class="nav-item active">
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        SẢN PHẨM
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                                
-                                @*<a class="nav-link" href="https://localhost:44359/Home/Menu">Sản phẩm <span class="sr-only">(current)</span> </a>*@
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/About">Tổng quan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://localhost:44359/Home/Book">Liên hệ</a>
+                                <a class="nav-link" href="https://localhost:44359/Admin/NhanVien/ListNV">Quản lý nhân viên</a>
                             </li>
                         </ul>
                         <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                            <a href="@Url.Action("GioHangPartial","GioHang")" class="user_link">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </a>
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                            <a href="https://localhost:44359/Home/Login" class="order_online">
-                                Đăng nhập
+                            <a href="https://localhost:44359/Admin/Admin/Login" class="order_online">
+                                Đăng xuất
                             </a>
                         </div>
                     </div>
@@ -111,63 +86,45 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Sản phẩm của chúng tôi
+                    Danh sách các nhân viên của cửa hàng
                 </h2>
             </div>
 
-            <ul class="filters_menu">
-
-                <li class="active" data-filter="*"><a href="https://localhost:44359/Home/Menu">All</a></li>
-                <li data-filter=".nikon"><a href="https://localhost:44359/SanPham/Nikon">Nikon</a></li>
-
-                <li data-filter=".canon"><a href="https://localhost:44359/SanPham/Canon">Canon</a></li>
-
-                <li data-filter=".sony"><a href="https://localhost:44359/SanPham/Sony">Sony</a></li>
-                <li data-filter=".lens"><a href="https://localhost:44359/SanPham/Lens">Lens</a></li>
-            </ul>
-
             <div class="filters-content">
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-sm-6 col-lg-4 all pizza">
-
-                            <div class="box">
-                                <div>
-                                    <div class="img-box">
-                                        <img src="@item.HINH" alt="thumbnails" />
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            @item.TENSANPHAM
-                                        </h5>
-                                        <p>
-                                            @item.MOTASANPHAM
-                                        </p>
-                                        <div class="options">
-                                            <h6>
-                                                <bdo>$</bdo> @item.GIABAN <bdo>VNĐ</bdo>
-                                            </h6>
-                                            <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.MASANPHAM, @strURL = Request.Url.ToString() })">Đặt mua</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    }
+                <div class="row" style="background-color: #F4ECF7;">
+                    <p style="background-color: #E74C3C; border-radius: 5px; padding: 10px; color: darkred; margin-left: 45%;">
+                        @Html.ActionLink("Tạo Nhân Viên", "CreateNV")
+                    </p>
+                    <table class="table">
+                        <tr>
+                            <th style="text-align: left"> Mã nhân viên </th>
+                            <th style="text-align: left"> Tên nhân viên</th>
+                            <th style="text-align: left"> Số điện thoại</th>
+                            <th style="text-align: left"> Giới tính</th>
+                            <th style="text-align: left"> Địa chỉ</th>
+                            <th style="text-align: left"> Trạng thái</th>
+                            <th style="text-align: left"> Tác vụ</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.MANV)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TENNV)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SDT)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GIOITINH)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DIACHI)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TRANGTHAI)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "EditNV", new { id = item.MANV }) |
+                                    @Html.ActionLink("Detail", "DetailNV", new { id = item.MANV }) |
+                                    @Html.ActionLink("Delete", "DeleteNV", new { id = item.MANV })
+                                </td>
+                            </tr>
+                        }
+                    </table>
                 </div>
             </div>
-
-            </div>
-
-            <div>
-                <div class="btn-box">
-                    <a href="">
-                        View More
-                    </a>
-                </div>
-            </div>
+        </div>
     </section>
 
     <!-- end food section -->
